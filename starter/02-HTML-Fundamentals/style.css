@@ -1,0 +1,269 @@
+* {
+	/* Global reset of marging and padding for all elements in the page */
+	/* Very common to do */
+	margin: 0;
+	padding: 0;
+}
+
+/* Inheritence */
+/* Make the CSS rule below for h1,h2,h3,... pointless as all elements will inherit the properties here */
+/* Note. Not all properties get passed down, mostly text properties */
+body {
+	font-family: sans-serif;
+	color: #444;
+
+	border-top: 10px solid #1098ad;
+}
+
+.container {
+	/* Trick to center the page's content by fixing a container's width and using auto left-right margin to center the 
+    container holding the page's content */
+	width: 800px;
+	margin: 0 auto;
+
+	position: relative;
+}
+
+article {
+	margin-bottom: 60px;
+}
+
+.main-header {
+	/* Background color for a container element */
+	background-color: #f7f7f7;
+
+	/* padding: Adds 20px worth of space between the content and the border */
+	/* value can be given in [EVERYWHERE], [TOPDOWN][LEFTRIGHT] */
+	padding: 20px;
+
+	margin-bottom: 60px;
+
+	/* Actual height of the header is 80 + 20 (padding) + 20 (padding) = 120px */
+	height: 80px;
+}
+
+.post-header {
+	margin-bottom: 40px;
+}
+
+/* Select by element */
+aside {
+	background-color: #f7f7f7;
+	/* Properties for borders of an element, has 3 arguments: width, style and color */
+	border-top: 5px solid #1098ad;
+	border-bottom: 5px solid #1098ad;
+
+	/* top-down 50px, left-right 0px */
+	padding: 50px 0px;
+
+	width: 500px;
+}
+
+/* list selector: Selector with "," that let us to declare property-value pair for multiple elements within 1 rule */
+/* h1,
+h2,
+h3,
+h3,
+h4,
+p,
+li {
+	font-family: sans-serif;
+	/* Shortcut for hex color when AA is the same for each A 
+	color: #444;
+} */
+
+h1 {
+	font-size: 26px;
+	text-transform: uppercase;
+	font-style: italic;
+}
+
+/* Psuedo-element (::XXX) allow us to style SOMETHING in the same way as an element */
+h1::first-letter {
+	font-style: normal;
+}
+
+h2 {
+	font-size: 40px;
+	margin-bottom: 30px;
+
+	position: relative;
+}
+
+/* ::before/::after - a psuedo-element that allow us to create an element that is placed as a first
+or last child of the element we "psuedoing" from. */
+h2::after {
+	/* Content must be given, can leave as "" if need be */
+	content: "TOP";
+
+	background-color: #ffee00;
+	color: #444;
+	padding: 5px 10px;
+	font-size: 15px;
+	font-weight: bold;
+
+	position: absolute;
+
+	/* Negative offsets to move out of the bounds */
+	top: -5px;
+	right: -10px;
+}
+
+h3 {
+	font-size: 30px;
+	margin-bottom: 20px;
+	margin-top: 40px;
+}
+
+/* Adjacent sibling selector: Select the RHS element if it directly follows the first element */
+h3 + p::first-line {
+	color: brown;
+}
+
+h4 {
+	font-size: 20px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+p {
+	font-size: 22px;
+	line-height: 1.5; /*Gap between 2 lines of text (1.5x of a line's height*/
+
+	/* COLLAPSING MARGIN - this 15px margin overlaps with the 40px margin from h3. In this
+    case, the larger margin gets picked to be displayed */
+	margin-bottom: 15px;
+}
+
+ul,
+ol {
+	/* Add 50px of spacing between the list and the left elements */
+	/* Even though left has no other elements, this pushes the list right side and display the list item's symbols */
+	margin-left: 50px;
+	margin-bottom: 20px;
+}
+
+li {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+li:last-child {
+	margin-bottom: 0;
+}
+
+/* Descendent selector: Selector that select an element of the given type from the children of another element */
+/* footer p {
+	font-size: 16px;
+} */
+
+/* Nesting of descendent selectors - Shouldn't use, it reflects too much of the HTML which makes it too dependent on the HMTL as well*/
+/* article header p {
+	font-style: italic;
+} */
+
+/* Select by ID - Rarely if ever use this */
+#author {
+	font-style: italic;
+	font-size: 18px;
+}
+#copyright {
+	font-size: 16px;
+}
+
+/* Select by Class - Always use this over ID to prepare for future*/
+.related-author {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.related-posts {
+	/* list-style: Changes the style of symbol used to denote each list item */
+	list-style: none;
+}
+
+h1,
+h2,
+h3 {
+	/* Hex color: #AABBDD  where AA is the Hex for red and BB is the hex  for blue and so on...*/
+	color: #1098ad;
+}
+
+/* Pseudo-class - A keyword added to a selector to specify the state of the selected element */
+/* For example, li:first-child deonotes a list item element that is the first child element of its enveloping element */
+li:first-child {
+	font-weight: bold;
+}
+
+li:last-child {
+	font-style: italic;
+}
+
+li:nth-child(2) {
+	color: chartreuse;
+}
+
+/* Doesn't work as the 1st child element of article is not p */
+article p:first-child {
+	font-weight: bold;
+}
+
+/* Styling hyperlinks */
+/* A hyperlink can have 4 states: link, visited, hover, active*/
+/* It is expected for them to look different from each other and they should be styled in the above order */
+
+/* :link select a that are actually a link (ie. has the href attribute) */
+a:link {
+	color: #1098ad;
+	/* Remove underline */
+	text-decoration: none;
+}
+
+a:visited {
+	color: #1098ad;
+}
+
+a:hover {
+	color: orangered;
+	font-weight: bold;
+	text-decoration: solid orangered;
+}
+
+/* This style is used when user's click is held down on the link */
+a:active {
+	background-color: black;
+	font-style: italic;
+}
+
+.post-img {
+	/* Since the parent element is <header> that by default is display: block (ie. takes up whole width),
+    this 100% is based on the parent element's width. Allowing the image to be the whole width too */
+	width: 100%;
+	height: auto;
+}
+
+.button-like {
+	font-size: 25px;
+	padding: 15px;
+
+	position: absolute;
+	bottom: 50px;
+	right: 50px;
+}
+
+/* Again propagate styling to children elements */
+nav {
+	text-align: center;
+}
+
+/* Example of using inline-block */
+nav a:link {
+	display: inline-block;
+	margin-right: 20px;
+	margin-top: 15px;
+}
+
+/* Chaining of pseduo classes */
+nav a:link:last-child {
+	margin-right: 0px;
+}
