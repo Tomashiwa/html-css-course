@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Flexbox</title>
+		<style>
+			.el--1 {
+				background-color: blueviolet;
+
+				/*
+          DEFAULT VALUES of flex
+          flex-grow: 0; // How many units of free space a flex item will take from the flexbox
+          flex-shrink: 1;  // How many units of space a flex item will give to fix all items into the flexbox
+          flex-basis: auto; // Set a minimum width the flex-item will TRY to achieve
+
+          flex: [GROW] [SHRINK] [BASIS]
+        */
+				flex: 1 0 auto;
+			}
+			.el--2 {
+				background-color: orangered;
+			}
+			.el--3 {
+				background-color: green;
+				height: 150px;
+			}
+			.el--4 {
+				background-color: goldenrod;
+			}
+			.el--5 {
+				background-color: palevioletred;
+				align-self: stretch;
+			}
+			.el--6 {
+				background-color: steelblue;
+				align-self: flex-start;
+			}
+			.el--7 {
+				background-color: yellow;
+			}
+			.el--8 {
+				background-color: crimson;
+				/* Align an individual flex-item */
+				align-self: flex-end;
+				/* Set a custom ordering for a flex-item */
+				/* All flex-item starts with ordering 0, arrange in ascending ordering */
+				order: -1;
+			}
+
+			.container {
+				/* STARTER */
+				font-family: sans-serif;
+				background-color: #ddd;
+				font-size: 40px;
+				margin: 40px;
+
+				/* FLEXBOX */
+				display: flex;
+				/* Vertically align the flex items  */
+				align-items: center;
+				/* Horizontally align the flex items (Remember it by like how .doc file content are justified) */
+				/* justify-content: space-between; */
+
+				/* Incidate the gap between rows and the gap between columns */
+				/* gap: [row-gap] [column gap] */
+				/* gap: 20px; */
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="el el--1">HTML</div>
+			<div class="el el--2">and</div>
+			<div class="el el--3">CSS</div>
+			<div class="el el--4">are</div>
+			<div class="el el--5">amazing</div>
+			<div class="el el--6">languages</div>
+			<div class="el el--7">to</div>
+			<div class="el el--8">learn</div>
+		</div>
+	</body>
+</html>

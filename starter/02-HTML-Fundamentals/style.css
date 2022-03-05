@@ -3,6 +3,10 @@
 	/* Very common to do */
 	margin: 0;
 	padding: 0;
+
+	/* box-sizing: A CSS property to determine whether the defined width and height includes
+	padding and borders or not (border-box: includes padding and borders) */
+	box-sizing: border-box;
 }
 
 /* Inheritence */
@@ -18,14 +22,14 @@ body {
 .container {
 	/* Trick to center the page's content by fixing a container's width and using auto left-right margin to center the 
     container holding the page's content */
-	width: 800px;
+	width: 1200px;
 	margin: 0 auto;
 
 	position: relative;
 }
 
 article {
-	margin-bottom: 60px;
+	/* margin-bottom: 60px; */
 }
 
 .main-header {
@@ -36,10 +40,10 @@ article {
 	/* value can be given in [EVERYWHERE], [TOPDOWN][LEFTRIGHT] */
 	padding: 20px;
 
-	margin-bottom: 60px;
+	/* margin-bottom: 60px; */
 
 	/* Actual height of the header is 80 + 20 (padding) + 20 (padding) = 120px */
-	height: 80px;
+	/* height: 80px; */
 }
 
 .post-header {
@@ -54,9 +58,7 @@ aside {
 	border-bottom: 5px solid #1098ad;
 
 	/* top-down 50px, left-right 0px */
-	padding: 50px 0px;
-
-	width: 500px;
+	padding: 50px 40px;
 }
 
 /* list selector: Selector with "," that let us to declare property-value pair for multiple elements within 1 rule */
@@ -124,6 +126,7 @@ h4 {
 	font-size: 20px;
 	text-transform: uppercase;
 	text-align: center;
+	margin-bottom: 20px;
 }
 
 p {
@@ -180,6 +183,7 @@ li:last-child {
 .related-posts {
 	/* list-style: Changes the style of symbol used to denote each list item */
 	list-style: none;
+	margin-left: 0;
 }
 
 h1,
@@ -260,10 +264,141 @@ nav {
 nav a:link {
 	display: inline-block;
 	margin-right: 20px;
-	margin-top: 15px;
+	/* margin-top: 15px; */
 }
 
 /* Chaining of pseduo classes */
 nav a:link:last-child {
 	margin-right: 0px;
+}
+
+/* FLOATS - Remove an element from the normal flow, but allow the page's content to wrap around it
+(unlike absolute positioning)*/
+/* Float the element and place it at the left of its container element */
+/*
+.author-img {
+	float: left;
+}
+*/
+
+/* Float the element and stack it onto the left of its container element */
+/*
+.author {
+	float: left;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+*/
+
+/*
+h1 {
+	float: left;
+}
+*/
+
+/* Without clear in main-header, this collapses the main-header element as the h1 and nav
+all went out of flow, no more elements in the header */
+/*
+nav {
+	float: right;
+}
+*/
+
+/* clear: sets whether an element must be moved below (cleared) 
+floating elements that precede it. Applies to floating and 
+non-floating elements. */
+/* Element must be a block element to be "cleared" */
+/*
+.main-header::after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+article {
+	width: 825px;
+	float: left;
+}
+
+aside {
+	width: 300px;
+	float: right;
+}
+
+footer {
+	clear: both;
+}
+*/
+
+/* FLEXBOX */
+.main-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.author {
+	margin-bottom: 0;
+}
+
+.author-box {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 15px;
+}
+
+.related-post {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 30px;
+}
+
+.related-link:link {
+	font-size: 17px;
+	font-weight: bold;
+	font-style: normal;
+	color: #1098ad;
+
+	display: block;
+	margin-bottom: 5px;
+}
+
+.related-author {
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: italic;
+	color: #444;
+}
+
+/* .content {
+	display: flex;
+	gap: 75px;
+	align-items: flex-start;
+}
+
+aside {
+	flex: 0 0 300px;
+} */
+
+/* GRID LAYOUT */
+.container {
+	display: grid;
+	grid-template-columns: 1fr 300px;
+	row-gap: 60px;
+	column-gap: 75px;
+}
+
+.main-header {
+	grid-column: 1 / span 2;
+}
+
+aside {
+	align-self: start;
+}
+
+footer {
+	grid-column: 1 / -1;
 }
