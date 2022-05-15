@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Accordion Component</title>
+
+		<style>
+			/*
+				SPACING SYSTEM (px)
+				2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+				FONT SIZE SYSTEM (px) from type-scale.com
+				10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+			*/
+
+			/* 
+				Colors picked from Open Colors
+				MAIN COLOR: #087f5b
+				GREY COLOR: #343a40
+            */
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				/* Use Inter typeface. If there isn't such typeface (eg. Offline), default to sans-serif typeface */
+				font-family: "Inter", sans-serif;
+				color: #343a40;
+			}
+
+			.accordion {
+				width: 700px;
+				/* Vertical margins (top & bottom): 100px and Horizontal margins (left & right): Distributed equally to center the element */
+				margin: 100px auto;
+
+				display: flex;
+				flex-direction: column;
+				gap: 24px;
+			}
+
+			.item {
+				/* 3rd param is blur radius, 4th param (not provided) is scale factor */
+				box-shadow: 0 0 32px rgba(0, 0, 0, 0.1);
+				padding: 24px;
+
+				display: grid;
+				grid-template-columns: auto 1fr auto;
+				gap: 24px;
+				align-items: center;
+			}
+
+			.index,
+			.title {
+				font-size: 24px;
+				font-weight: 500;
+				/* color: #087f5b; */
+			}
+
+			.index {
+				color: #ced4da;
+			}
+
+			.icon {
+				width: 24px;
+				height: 24px;
+				stroke: #087f5b;
+			}
+
+			.content-box {
+				display: none;
+				grid-column: 2 / 3;
+			}
+
+			.content-box p {
+				line-height: 1.25;
+				margin-bottom: 24px;
+			}
+
+			.content-box ul {
+				margin-left: 20px;
+				color: #868e96;
+
+				/* Insert gaps between the list items using flexbox */
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+			}
+
+			/* OPEN STATE - Add an additional class to customise how the elements look in another state */
+			.open {
+				border-top: 4px solid #087f5b;
+			}
+
+			.open .content-box {
+				display: block;
+			}
+
+			.open .title,
+			.open .index {
+				color: #087f5b;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="accordion">
+			<div class="item">
+				<p class="index">01</p>
+				<p class="title">What is the timeline?</p>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="icon"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					stroke-width="2"
+				>
+					<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+				</svg>
+				<div class="content-box">
+					<p>
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id, voluptatem.
+						Maiores iusto architecto nobis magnam nisi sunt voluptatibus provident
+						possimus dignissimos vitae tenetur quam minus consectetur voluptates iure
+						excepturi, vero incidunt?
+					</p>
+					<ul>
+						<li>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
+						<li>Itaque ad dolorum placeat mollitia beatae error cumque quis.</li>
+						<li>Perspiciatis, quam sunt quibusdam rem odit aut provident eos sint.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="item open">
+				<p class="index">02</p>
+				<p class="title">Why does my event kept repeating?</p>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="icon"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					stroke-width="2"
+				>
+					<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+				</svg>
+				<div class="content-box">
+					<p>
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id, voluptatem.
+						Maiores iusto architecto nobis magnam nisi sunt voluptatibus provident
+						possimus dignissimos vitae tenetur quam minus consectetur voluptates iure
+						excepturi, vero incidunt?
+					</p>
+					<ul>
+						<li>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
+						<li>Itaque ad dolorum placeat mollitia beatae error cumque quis.</li>
+						<li>Perspiciatis, quam sunt quibusdam rem odit aut provident eos sint.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="item">
+				<p class="index">03</p>
+				<p class="title">How to travel across the period?</p>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="icon"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					stroke-width="2"
+				>
+					<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+				</svg>
+				<div class="content-box">
+					<p>
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id, voluptatem.
+						Maiores iusto architecto nobis magnam nisi sunt voluptatibus provident
+						possimus dignissimos vitae tenetur quam minus consectetur voluptates iure
+						excepturi, vero incidunt?
+					</p>
+					<ul>
+						<li>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
+						<li>Itaque ad dolorum placeat mollitia beatae error cumque quis.</li>
+						<li>Perspiciatis, quam sunt quibusdam rem odit aut provident eos sint.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

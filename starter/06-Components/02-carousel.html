@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Carousel Component</title>
+
+		<style>
+			/*
+				SPACING SYSTEM (px)
+				2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+				FONT SIZE SYSTEM (px) from type-scale.com
+				10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+			*/
+
+			/* 
+				Colors picked from Open Colors
+				MAIN COLOR: #087f5b
+				GREY COLOR: #343a40
+            */
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				/* Use Inter typeface. If there isn't such typeface (eg. Offline), default to sans-serif typeface */
+				font-family: "Inter", sans-serif;
+				color: #343a40;
+			}
+
+			.carousel {
+				width: 800px;
+				margin: 100px auto;
+				background-color: #087f5b;
+				padding: 24px;
+				/* Add substantial amount of left padding to push content (including image) into the box */
+				padding-left: 86px;
+				border-radius: 8px;
+				color: #fff;
+
+				/* Set this container to be relative for the absolute buttons to refer from */
+				position: relative;
+
+				display: flex;
+				align-items: center;
+				/* Add substantial amount of gap to push the text content to the right of the image */
+				gap: 86px;
+			}
+
+			img {
+				width: 200px;
+				height: 200px;
+				border-radius: 8px;
+
+				/* A property that allow us to rotate, scale, skew, or translate a transformable element */
+				/* CSS transformation does not affect the box model (ie. Transform the element's appearance but not its influence on the document flow) */
+				transform: scale(1.5);
+				box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+			}
+
+			.testimonial-text {
+				/* Using different font size and weight to produce a visual hierarchy */
+				font-size: 18px;
+				font-weight: 500;
+				line-height: 1.5;
+				margin-bottom: 32px;
+			}
+
+			.testimonial-author {
+				/* Using different font size and color to produce a visual hierarchy */
+				font-size: 14px;
+				margin-bottom: 5px;
+				color: #ebfbee;
+			}
+
+			.testimonial-job {
+				/* Using different font size and color to produce a visual hierarchy */
+				font-size: 12px;
+				color: #d3f9d8;
+			}
+
+			.btn {
+				background-color: #fff;
+				/* Buttons have a default bevel border. Can set none to remove it */
+				border: none;
+
+				/* Detach the buttons from the flex container */
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				/* Border radius is set high enough for the button to become circular */
+				border-radius: 40px;
+
+				/* Center the arrow icon in the button */
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				/* Position the top of the element to the 50% height of the parent container */
+				top: 50%;
+				box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+
+				cursor: pointer;
+			}
+
+			.btn-left {
+				/* [IN RELATION TO PARENT ELEMENT] Position the left of the element to the start of the parent container's width  */
+				left: 0;
+				/* [IN RELATION TO ELEMENT ITSELF] Translate the button to left by 50% of its width and down by 50% of its height */
+				transform: translate(-50%, -50%);
+			}
+
+			.btn-right {
+				/* [IN RELATION TO PARENT ELEMENT] Position the right of the element to the end of the parent container's width */
+				right: 0;
+				/* [IN RELATION TO ELEMENT ITSELF] Translate the button to right by 50% of its width and down by 50% of its height */
+				transform: translate(50%, -50%);
+			}
+
+			.btn-icon {
+				width: 24px;
+				height: 24px;
+				stroke: #087f5b;
+			}
+
+			.dots {
+				position: absolute;
+				/* Use bottom, left and translate the position the dots' container */
+				bottom: 0;
+				left: 50%;
+				transform: translate(-50%, 32px);
+
+				/* Establish gaps between those dots */
+				display: flex;
+				gap: 12px;
+			}
+
+			.dot {
+				height: 12px;
+				width: 12px;
+				background-color: #fff;
+				border: 2px solid #087f5b;
+				border-radius: 12px;
+
+				/* Change the cursor to the finger that is going to click */
+				cursor: pointer;
+			}
+
+			.dot-fill {
+				background-color: #087f5b;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="carousel">
+			<img src="makise.jpg" alt="Makise Christsu" />
+			<blockquote class="testimonial">
+				<p class="testimonial-text">
+					"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore perspiciatis
+					sint labore? Doloribus maiores enim, ratione ea vitae."
+				</p>
+				<p class="testimonial-author">Makise Christsu</p>
+				<p class="testimonial-job">Neurologist at Future Lab</p>
+			</blockquote>
+
+			<button class="btn btn-left">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="btn-icon"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					stroke-width="2"
+				>
+					<path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+				</svg>
+			</button>
+			<button class="btn btn-right">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="btn-icon"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					stroke-width="2"
+				>
+					<path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+				</svg>
+			</button>
+			<div class="dots">
+				<!-- A HTML entity that represents a non-breaking spacing -->
+				<button class="dot dot-fill">&nbsp;</button>
+				<button class="dot">&nbsp;</button>
+				<button class="dot">&nbsp;</button>
+				<button class="dot">&nbsp;</button>
+			</div>
+		</div>
+	</body>
+</html>
