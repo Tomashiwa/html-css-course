@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Hero Section</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<style>
+			/*
+				SPACING SYSTEM (px)
+				2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+				FONT SIZE SYSTEM (px) from type-scale.com
+				10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+			*/
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			html {
+				font-family: "Rubik", sans-serif;
+				color: #444;
+			}
+
+			header {
+				padding-top: 50px;
+				height: 100vh;
+
+				display: flex;
+				flex-direction: column;
+
+				position: relative;
+
+				/* We can stack images in the background-image property with the first values as the top of the stack and so forth */
+				/* Since there isn't any way to indicate a solid color image, we can have a linear gradient image with exactly 2 same colors*/
+				background-image: linear-gradient(rgba(34, 34, 34, 0.5), rgba(34, 34, 34, 0.5)),
+					url("hero.jpg");
+				background-size: cover;
+				color: #fff;
+			}
+
+			nav {
+				font-size: 20px;
+				font-weight: 700;
+
+				display: flex;
+				justify-content: space-between;
+			}
+
+			h1 {
+				font-size: 52px;
+				margin-bottom: 32px;
+			}
+
+			p {
+				font-size: 20px;
+				line-height: 1.6;
+				margin-bottom: 48px;
+			}
+
+			.btn:link,
+			.btn:visited {
+				font-size: 20px;
+				font-size: 600;
+				background-color: #e67e22;
+				color: #fff;
+				text-decoration: none;
+				border-radius: 9px;
+
+				/* Giving horizontal padding double over vertical padding for buttons is the norm */
+				padding: 16px 32px;
+
+				/* Set to inline-block to allow vertical padding to be considered in the document flow */
+				display: inline-block;
+			}
+
+			h2 {
+				font-size: 44px;
+				margin-bottom: 48px;
+			}
+
+			section {
+				padding: 96px 0;
+			}
+
+			/* A utility class to center elements in the page */
+			.container {
+				width: 1200px;
+				margin: 0 auto;
+			}
+
+			/* Use absolute positioning to center the content vertically and horizontally */
+			/* Flexbox cannot do this without establishing a height to position the container */
+			.header-container {
+				width: 1200px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+
+			/* Enclose the content with an inner container within the original parent container to adjust the sizing */
+			.header-container-division {
+				width: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Semantic element for the introduciton of the website -->
+		<header>
+			<nav class="container">
+				<div>LOGO</div>
+				<div>NAVIGATION</div>
+			</nav>
+
+			<div class="header-container">
+				<div class="header-container-division">
+					<h1>A healthy meal delivered to your door, every single day</h1>
+					<p>
+						The smart 365 days per year food subscription that will make you eat healthy
+						again. Tailored to your personal tastes and nutritional needs.
+					</p>
+					<a href="#" class="btn">Start eating well</a>
+				</div>
+			</div>
+		</header>
+
+		<section>
+			<div class="container">
+				<h2>Random heading</h2>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores hic veritatis,
+					aliquam necessitatibus vel, veniam eius amet ipsum pariatur libero facere
+					suscipit obcaecati velit sapiente. Labore laudantium quia culpa perferendis
+					ipsa. Ad deserunt, explicabo ut animi quam tempora placeat, magni dignissimos
+					quae esse modi facilis delectus beatae in temporibus perferendis aliquid
+					nesciunt minus quidem ipsa sit assumenda? Accusantium ex mollitia, in quibusdam
+					fugiat voluptas exercitationem, magni, harum doloremque blanditiis nihil?
+				</p>
+			</div>
+		</section>
+	</body>
+</html>
