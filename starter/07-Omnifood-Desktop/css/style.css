@@ -1,0 +1,505 @@
+/* ************************************** */
+/* HEADER */
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #fdf2e9;
+
+	/* Fixed height to allow sticky header to be implemented much easier */
+	height: 9.6rem;
+	padding: 0 4.8rem;
+}
+
+.logo {
+	height: 2.2rem;
+}
+
+/* ************************************** */
+/* NAVIGATION */
+.header-nav-list {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	gap: 3.2rem;
+}
+
+.header-nav-link:link,
+.header-nav-link:visited {
+	display: inline-block;
+	text-decoration: none;
+	color: #333;
+	font-weight: 500;
+	font-size: 1.8rem;
+
+	transition: all 0.3s;
+}
+
+.header-nav-link:hover,
+.header-nav-link:active {
+	color: #cf711f;
+}
+
+.header-nav-link.nav-cta:link,
+.header-nav-link.nav-cta:visited {
+	background-color: #e67e22;
+	color: white;
+	padding: 1.2rem 2.4rem;
+	border-radius: 0.9rem;
+}
+
+.header-nav-link.nav-cta:hover,
+.header-nav-link.nav-cta:active {
+	background-color: #cf711f;
+}
+
+/* ************************************** */
+/* HERO SECTION */
+.section-hero {
+	background-color: #fdf2e9;
+	/* 4.8 top, 0 left, 9.6 bottom, 0 right */
+	padding: 4.8rem 0 9.6rem 0;
+}
+
+.hero {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 9.6rem;
+	align-items: center;
+
+	/* Center the element horizontally in the section (Reason for a Hero container element) */
+	max-width: 130rem;
+	margin: 0 auto;
+
+	/* To ensure that there is always some buffer space between the hero section at the browser's horizontal border */
+	padding: 0 3.2rem;
+}
+
+.hero-description {
+	font-size: 2rem;
+	line-height: 1.75;
+
+	margin-bottom: 4.8rem;
+}
+
+.hero-img {
+	/* Takes 100% of the parent container's (ie. hero-img-box) width which is half of the hero container */
+	width: 100%;
+}
+
+.delivered-meals {
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+	margin-top: 8rem;
+}
+
+.delivered-imgs {
+	display: flex;
+}
+
+.delivered-imgs img {
+	height: 4.8rem;
+	width: 4.8rem;
+	border-radius: 4.8rem;
+	border: 3px solid #fdf2e9;
+
+	/* As flex-box does not support negative gaps, we need to apply negative margins to move the images such that they overlay one another */
+	margin-right: -1.6rem;
+}
+
+.delivered-imgs img:last-child {
+	/* The negative margin can pull the other flex item which negates the gap. So, this is to remove the negative
+    margin for the last child */
+	margin-right: 0;
+}
+
+.delivered-text {
+	font-size: 1.8rem;
+	font-weight: 600;
+}
+
+.delivered-text span {
+	color: #cf711f;
+	font-weight: 700;
+}
+
+/* ************************************** */
+/* HOW IT WORKS SECTION */
+.section-how {
+	padding: 9.6rem 0;
+}
+
+.step-number {
+	font-size: 8.6rem;
+	font-weight: 600;
+
+	/* May not meet the contrast ratio rule, but we can break rule for the less important stuff */
+	/* Also, this gives a better visual as well */
+	color: #ddd;
+
+	margin-bottom: 1.2rem;
+}
+
+.step-description {
+	font-size: 1.6rem;
+	line-height: 1.8;
+}
+
+.step-img-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	position: relative;
+}
+
+.step-img-box::before,
+.step-img-box::after {
+	content: "";
+	display: block;
+
+	/* Center it only top of the phone image using absolute position */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.step-img-box::before {
+	background-color: #fdf2e9;
+
+	width: 60%;
+	/* 60% of the parent element's width */
+	padding-bottom: 60%;
+	/* Can only be set if the parent element has a fixed height which it does not */
+	/* height: 60%; */
+	border-radius: 60%;
+
+	/* Place the circle behind the phone image and the darker circle*/
+	z-index: -2;
+}
+
+.step-img-box::after {
+	background-color: #fae5d3;
+
+	width: 45%;
+	padding-bottom: 45%;
+	border-radius: 45%;
+
+	/* Place the circle behind the phone image and in front of the lighter circle */
+	z-index: -1;
+}
+
+.step-img {
+	width: 35%;
+}
+
+/* ************************************** */
+/* FEATURED IN SECTION */
+.section-featured {
+	padding: 4.8rem 0 3.2rem 0;
+}
+
+.heading-featured-in {
+	font-size: 1.4rem;
+	text-transform: uppercase;
+	letter-spacing: 0.75px;
+	font-weight: 500;
+	text-align: center;
+	margin-bottom: 2.4rem;
+	color: #999;
+}
+
+.logos {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.logos img {
+	height: 3.2rem;
+	/* Set brightness to 0 turning them to black | Set opacity to 0.6 turning them to grey */
+	filter: brightness(0);
+	opacity: 0.5;
+}
+
+/* ************************************** */
+/* MEALS SECTION */
+
+.section-meals {
+	padding: 9.6rem 0;
+}
+
+.meal {
+	/* Giving a subtle shadow to make a white card stand out from a white background */
+	box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+	/* A larger border radius since this element is abit larger */
+	border-radius: 11px;
+	/* Rather than circlefying the image's corners, we can prevent content overflow from the meal card */
+	overflow: hidden;
+
+	/* Transition the translation on the meal card */
+	transition: all 0.5s;
+}
+
+.meal:hover {
+	transform: translate(0, -2rem);
+	box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.075);
+}
+
+.meal-content {
+	padding: 3.2rem 4.8rem 4.8rem 4.8rem;
+}
+
+.meal-tags {
+	margin-bottom: 1.2rem;
+
+	display: flex;
+	gap: 0.4rem;
+}
+
+.tag {
+	display: inline-block;
+	padding: 0.4rem 0.8rem;
+	font-size: 1.2rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	/* Green to fit the vegetarian theme */
+	color: #333;
+	/* Arbitrary large value to circlefy the corners */
+	border-radius: 100px;
+}
+.tag--vegetarian {
+	background-color: #51cf66;
+}
+.tag--vegan {
+	background-color: #94d82d;
+}
+.tag--paleo {
+	background-color: #ffd43b;
+}
+
+.meal-img {
+	width: 100%;
+}
+
+.meal-name {
+	font-size: 2.4rem;
+	color: #333;
+	font-weight: 600;
+	margin-bottom: 3.2rem;
+}
+
+.meal-icon {
+	width: 2.4rem;
+	height: 2.4rem;
+	/* In different icon packs, the icon color may need to be change through color, font-color, fill, or stroke property */
+	color: #e67e22;
+}
+
+.meal-attributes {
+	list-style: none;
+
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.meal-attribute {
+	font-size: 1.8rem;
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+}
+
+.all-recipes {
+	text-align: center;
+	font-size: 1.8rem;
+}
+
+/* ************************************** */
+/* TESTIMONIALS SECTION */
+
+.section-testimonials {
+	/* As we want to grab user's attention to this section as well, we will have this light orange background */
+	background-color: #fdf2e9;
+
+	/* Use its own grid to customize the gapping between testimonials and gallery */
+	display: grid;
+	/* fr can be used in a similar fashion as % to better define the sizing differences */
+	grid-template-columns: 55fr 45fr;
+	align-items: center;
+}
+
+.testimonials-container {
+	padding: 9.6rem;
+}
+
+.testimonials {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	row-gap: 4.8rem;
+	column-gap: 8rem;
+}
+
+.testimonial-img {
+	/* Use fixed width to keep the image small throughout all screen sizes */
+	width: 6.4rem;
+
+	border-radius: 6.4rem;
+	margin-bottom: 1.2rem;
+}
+
+.testimonial-text {
+	font-size: 1.8rem;
+
+	/* Line height's unit is a multiplier */
+	line-height: 1.8;
+
+	margin-bottom: 1.6rem;
+}
+
+.testimonial-name {
+	font-size: 1.6rem;
+	color: #6f6f6f;
+}
+
+.gallery {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.6rem;
+
+	/* Add spacing around the galllery that is the same amount as the gap */
+	padding: 1.6rem;
+}
+
+.gallery-item {
+	overflow: hidden;
+}
+
+.gallery-item img {
+	/* Removing the line spacing between the img elements due to them being inline elements */
+	display: block;
+
+	width: 100%;
+	transition: all 0.25s;
+}
+
+.gallery-item img:hover {
+	/* Combine with overflow: hidden to give a "zoom-in" effect upon hover */
+	transform: scale(1.1);
+}
+
+/* ************************************** */
+/* PRICING SECTION */
+
+.section-pricing {
+	padding: 9.6rem 0;
+}
+
+.pricing-plan {
+	border-radius: 11px;
+
+	/* Keep the element thinner */
+	width: 75%;
+}
+
+.pricing-plan--starter {
+	/* Stick the first plan to the center */
+	justify-self: end;
+	/* Only has some basic bordering */
+	border: 2px solid #fdf2e9;
+	/* Remove 2px due to the bordering */
+	padding: 4.6rem;
+}
+
+.pricing-plan--complete {
+	/* Emphasize this plan over the starter plan */
+	background-color: #fdf2e9;
+	padding: 4.8rem;
+	position: relative;
+	overflow: hidden;
+}
+/* Adds a "Best value" ribbon over the complete plan to further recommend to the user  */
+.pricing-plan--complete::after {
+	content: "Best value";
+	position: absolute;
+	top: 4.5%;
+	right: -13.4%;
+	text-transform: uppercase;
+	font-size: 1.4rem;
+	font-weight: 700;
+	background-color: #ffd43b;
+	color: #333;
+	padding: 0.8rem 5rem;
+
+	transform: rotate(45deg);
+}
+
+.plan-header {
+	text-align: center;
+	margin-bottom: 4.8rem;
+}
+
+.plan-name {
+	color: #cf711f;
+	font-weight: 600;
+	font-size: 2rem;
+	text-transform: uppercase;
+	letter-spacing: 0.75;
+	margin-bottom: 3.2rem;
+}
+
+.plan-price {
+	font-size: 6.2rem;
+	font-weight: 600;
+	color: #333;
+	margin-bottom: 1.6rem;
+}
+.plan-price span {
+	font-size: 3rem;
+	font-weight: 500;
+	margin-right: 0.8rem;
+}
+
+.plan-text {
+	font-size: 1.6rem;
+	line-height: 1.6;
+	color: #6f6f6f;
+}
+
+.plan-sign-up {
+	/* Since the CTA button is a <a>, text-align will work */
+	text-align: center;
+	/* Adding margin to top here instead of adding margin to bottom of previous element, as that element has a general styling */
+	margin-top: 4.8rem;
+}
+
+.plan-details {
+	font-size: 1.6rem;
+	line-height: 1.6;
+	text-align: center;
+}
+
+.feature-icon {
+	color: #e67e22;
+	height: 3.2rem;
+	width: 3.2rem;
+	margin-bottom: 3.2rem;
+
+	/* Adding a circle background behind the icon */
+	background-color: #fdf2e9;
+	padding: 1.6rem;
+	border-radius: 50%;
+}
+.feature-title {
+	font-size: 2.4rem;
+	color: #333;
+	font-weight: 700;
+	margin-bottom: 1.6rem;
+}
+.feature-text {
+	font-size: 1.8rem;
+	line-height: 1.8;
+}

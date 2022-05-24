@@ -1,0 +1,249 @@
+/*
+    SETTINGS FOR DESIGN INGREDIENTS
+
+    >> 01 - Typography system <<
+    Font sizing (px):
+	    10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+    Font weights:
+        400 (Normal), 500, 600 (Semi-bold), 700 (Bold)
+
+    Line heights:
+        Default - 1
+        Small - 1.05
+		Medium - 1.2
+        Paragraph default - 1.6
+
+	Letter spacing
+		-0.5px, 0.75px
+
+    >> 02 - Colors <<
+    Primary: 
+        #e67e22 
+    Tints (Lighter versions):
+        #fdf2e9 #fae5d3
+    Shades (Darker versions):
+        #cf711f 
+    Accents:
+
+    Greys: 
+        #6f6f6f #555 #333
+
+    >> 05 - Shadows <<
+
+    >> 06 - Border-radius <<
+    Default: 9px
+	Medium: 11px
+
+    >> 07 - Whitespace <<
+    Spacing system (px):
+        2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+	/* rem is a CSS unit that refers to the font size of the root element (ie. <html>) */
+	/* By default, a browser's font size is 16px */
+	/* By using rem as our length unit throughout the page, we can easily change the scaling of all elements by adjusting the root element's font size*/
+
+	/* Always try to use rem, following the 1rem to 10px rule (10px because is easier to convert) */
+	/* 62.5% of the default font size (from browser) => 62.5% of 16px => 10px */
+	/* Allow us to respect the user's definition of browser's font size */
+	font-size: 62.5%;
+
+	/* Before elements are rendered to the page, all relative units (eg. rem, %) are converted to px */
+}
+
+body {
+	font-family: "Rubik", sans-serif;
+	line-height: 1;
+	font-weight: 400;
+	color: #555;
+}
+
+.test {
+	background-color: red;
+	color: #fff;
+	font-size: 2rem; /* 20 px */
+	padding: 10rem; /* 100px */
+	/* A property to set width as what's given if possible. Else, set the parent container's width as the target width */
+	max-width: 80rem; /* 800 px */
+}
+
+/* ************************************** */
+/* GENERAL REUSABLE COMPONENTS */
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+	font-weight: 700;
+	color: #333;
+	letter-spacing: -0.5px;
+}
+
+.heading-primary {
+	font-size: 5.2rem;
+	line-height: 1.05;
+	margin-bottom: 3.2rem;
+}
+
+.heading-secondary {
+	font-size: 4.4rem;
+	line-height: 1.2;
+	/* Significant margins to ensure the heading stands out from its content */
+	margin-bottom: 9.6rem;
+}
+
+.heading-tertiary {
+	font-size: 3rem;
+	line-height: 1.2;
+	margin-bottom: 3.2rem;
+}
+
+.subheading {
+	/* Because we use an inline element <span> but we want it to take the whole block */
+	display: block;
+	font-size: 1.6rem;
+	font-weight: 500;
+
+	/* For small font size and uppercase text, it is better with some letter spacing */
+	letter-spacing: 0.75px;
+
+	/* Use a darker shade for better contrast with background */
+	color: #cf711f;
+
+	text-transform: uppercase;
+	margin-bottom: 1.6rem;
+}
+
+.btn:link,
+.btn:visited {
+	display: inline-block;
+	font-size: 2rem;
+	font-weight: 600;
+	padding: 1.6rem 3.2rem;
+	border-radius: 0.9rem;
+	text-decoration: none;
+
+	/* A CSS property for defining how an element's CSS property transition between 2 states of the element */
+	/* States can be defined using pseudo-classes like :hover and :active or via JS */
+	/* Syntax: property_name | duration OR property_name | duration | delay OR property_name | duration | delay | easing_function */
+	transition: all 0.25s;
+}
+
+.btn--full:link,
+.btn--full:visited {
+	background-color: #e67e22;
+	color: #fff;
+}
+
+.btn--full:hover,
+.btn--full:active {
+	background-color: #cf711f;
+}
+
+.btn--outline:link,
+.btn--outline:visited {
+	background-color: #fff;
+	color: #555;
+}
+
+.btn--outline:hover,
+.btn--outline:active {
+	background-color: #fdf2e9;
+
+	/* Trick for adding border inside the element */
+	/* No offsets, No blur, Solid 3px white border within*/
+	box-shadow: inset 0 0 0 3px #fff;
+}
+
+/* Utility class to add a small amount of space to the right */
+.margin-right-sm {
+	margin-right: 1.6rem !important;
+}
+.margin-bottom-md {
+	margin-bottom: 4.8rem !important;
+}
+
+/* Reusable centered container of size 1200 pixels */
+.container {
+	max-width: 120rem;
+	margin: 0 auto;
+	padding: 0 3.2rem;
+}
+
+/* Reusable grid */
+.grid {
+	display: grid;
+	/* Gap property can be seperate to row and column gaps */
+	row-gap: 9.6rem;
+	column-gap: 6.4rem;
+}
+/* Add a margin between grids */
+.grid:not(:last-child) {
+	margin-bottom: 9.6rem;
+}
+.grid--2-cols {
+	grid-template-columns: repeat(2, 1fr);
+}
+.grid--3-cols {
+	grid-template-columns: repeat(3, 1fr);
+}
+.grid--4-cols {
+	grid-template-columns: repeat(4, 1fr);
+}
+.grid--center-vert {
+	/* Vertically center each square's content */
+	align-items: center;
+}
+
+/* By default, the <strong> can be too bolded. As such, we redefine <strong> to be less bold */
+strong {
+	font-weight: 500;
+}
+
+.link:link,
+.link:visited {
+	color: #e67e22;
+	text-decoration: none;
+
+	display: inline-block;
+	padding-bottom: 2px;
+	/* Use a border to add a line under the link instead of use text-decoration, looks better*/
+	/* currentColor is a shortcut keyword to diredtly use current font color */
+	border-bottom: 1px solid currentColor;
+}
+
+.link:hover,
+.link:active {
+	color: #cf711f;
+	/* Cannot just remove border, as the document flow will get adjusted */
+	border-bottom: 1px solid transparent;
+}
+
+.center-text {
+	text-align: center;
+}
+
+.list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 1.6rem;
+}
+
+.list-icon {
+	width: 3rem;
+	height: 3rem;
+	color: #e67e22;
+}
+
+.list-item {
+	font-size: 1.8rem;
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+}
