@@ -503,3 +503,180 @@
 	font-size: 1.8rem;
 	line-height: 1.8;
 }
+
+/* ************************************** */
+/* CTA SECTION */
+
+.section-cta {
+	padding: 4.8rem 0 12.8rem 0;
+}
+
+.cta {
+	/* Can be flexbox as well but since this is a larger element, it provides more control */
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	/* Direction of a linear gradient can be set as degrees or english-word direction */
+	background-image: linear-gradient(to right bottom, #eb984e, #e67e22);
+	box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
+	border-radius: 1.1rem;
+
+	overflow: hidden;
+}
+
+.cta-text-box {
+	/* Instead of just choosing black or grey, we can have a much darker shade of the primary color to integrate the text nicely */
+	color: #45260a;
+	padding: 4.8rem 6.4rem 6.4rem 6.4rem;
+}
+
+.cta-text {
+	font-size: 1.8rem;
+	line-height: 1.8;
+	margin-bottom: 4.8rem;
+}
+
+.cta .heading-secondary {
+	color: #45260a;
+	margin-bottom: 3.2rem;
+}
+
+.cta-img-box {
+	/* Image is set using CSS instead of <img> to allow the overlaying color on top of the image easier */
+	/* Overlays a semi-transparent gradient over the image to make it less stand out */
+	background-image: linear-gradient(
+			to right bottom,
+			rgba(235, 152, 78, 0.35),
+			rgba(230, 125, 34, 0.35)
+		),
+		url("../img/eating.jpg");
+	/* A CSS property that sets the size of the element's background image */
+	/* Contain: Scale as much in the container without cropping or stretching */
+	/* Cover: Scales to fill the container (ie. Cover the container's height and width completely) */
+	/* Auto: Scales automatically such that the image's intrinsic proportions are maintained  */
+	/* SPECIFIC VALUE: Scale to a specified length */
+	background-size: cover;
+	/* A CSS property that sets the initial position for a background image against a specific edge (eg. top, left, right, down) */
+	background-position: center;
+}
+
+.cta-form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 3.2rem;
+	row-gap: 2.4rem;
+}
+
+.cta-form label {
+	display: block;
+	font-size: 1.6rem;
+	font-weight: 500;
+	margin-bottom: 1.2rem;
+}
+
+.cta-form input,
+.cta-form select {
+	width: 100%;
+	padding: 1.2rem;
+	font-size: 1.8rem;
+
+	/* Font and color within the input field does not use the <body>'s font by default, we need to explicitly inherit it from the CTA box */
+	font-family: inherit;
+	color: inherit;
+
+	border: none;
+	background-color: #fdf2e9;
+	border-radius: 9px;
+
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Can use pseudo-element to style the placeholder text in an input field */
+.cta-form input::placeholder {
+	color: #aaa;
+}
+
+.cta-form *:focus {
+	outline: none;
+	/* Override the general outline styling we did in general.css to make it stands out more in cta's background color */
+	box-shadow: 0 0 0 0.8rem rgba(253, 242, 233, 0.5);
+}
+
+/* ************************************** */
+/* FOOTER SECTION */
+
+.footer {
+	padding: 12.8rem 0;
+	/* Add a line to better distinguish the footer from the above sections */
+	border-top: 1px solid #eee;
+}
+
+.grid--footer {
+	grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+}
+
+.footer-heading {
+	font-size: 1.8rem;
+	font-weight: 500;
+	margin-bottom: 4rem;
+}
+
+.social-links {
+	list-style: none;
+	display: flex;
+	gap: 2.4rem;
+}
+
+.social-icon {
+	width: 2.4rem;
+	height: 2.4rem;
+}
+
+.copyright {
+	font-size: 1.4rem;
+	color: #767676;
+	line-height: 1.6;
+	/* TRICK: Allocate the remaining space in the flex container as the upper margin for this element to push this content to the bottom*/
+	margin-top: auto;
+}
+
+.logo-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.footer-logo {
+	display: block;
+	margin-bottom: 3.2rem;
+}
+
+.contacts {
+	font-style: normal;
+	font-size: 1.6rem;
+	line-height: 1.6;
+}
+
+.address {
+	margin-bottom: 2.4rem;
+}
+
+.footer-nav {
+	list-style: none;
+
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+}
+
+/* Use different font color to establish visual hierarchy */
+.footer-link:link,
+.footer-link:visited {
+	text-decoration: none;
+	font-size: 1.6rem;
+	color: #767676;
+	transition: all 0.3s;
+}
+
+.footer-link:hover,
+.footer-link:active {
+	color: #555;
+}

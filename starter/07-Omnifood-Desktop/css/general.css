@@ -20,9 +20,9 @@
     Primary: 
         #e67e22 
     Tints (Lighter versions):
-        #fdf2e9 #fae5d3
+        #fdf2e9 #fae5d3 #eb984e
     Shades (Darker versions):
-        #cf711f 
+        #cf711f  #45260a
     Accents:
 
     Greys: 
@@ -119,6 +119,7 @@ body {
 	margin-bottom: 1.6rem;
 }
 
+.btn,
 .btn:link,
 .btn:visited {
 	display: inline-block;
@@ -127,6 +128,11 @@ body {
 	padding: 1.6rem 3.2rem;
 	border-radius: 0.9rem;
 	text-decoration: none;
+
+	/* Mainly for .btn */
+	border: none;
+	cursor: pointer;
+	font-family: inherit;
 
 	/* A CSS property for defining how an element's CSS property transition between 2 states of the element */
 	/* States can be defined using pseudo-classes like :hover and :active or via JS */
@@ -158,6 +164,18 @@ body {
 	/* Trick for adding border inside the element */
 	/* No offsets, No blur, Solid 3px white border within*/
 	box-shadow: inset 0 0 0 3px #fff;
+}
+
+.btn--form {
+	background-color: #45260a;
+	color: #fdf2e9;
+	/* Since grid items by default will stretch to fit the whole cell */
+	align-self: flex-end;
+	padding: 1.2rem;
+}
+.btn--form:hover {
+	background-color: #fff;
+	color: #555;
 }
 
 /* Utility class to add a small amount of space to the right */
@@ -194,6 +212,9 @@ body {
 }
 .grid--4-cols {
 	grid-template-columns: repeat(4, 1fr);
+}
+.grid--5-cols {
+	grid-template-columns: repeat(5, 1fr);
 }
 .grid--center-vert {
 	/* Vertically center each square's content */
@@ -246,4 +267,19 @@ strong {
 	display: flex;
 	align-items: center;
 	gap: 1.6rem;
+}
+
+/* The default focus outline tends to be ugly, so we should override them if possible */
+/* Overwrite how the "focus" outline on the elements will look like */
+*:focus {
+	/* CSS property that dictates how the outline looks like */
+	/* Behave like the border property */
+	outline: none;
+
+	/* Provides a dotted outline over the focused element */
+	/* outline: 4px dotted #e67e22;
+	outline-offset: 8px; */
+
+	/* Provides a thick outline that adapts to the shape of the focused element */
+	box-shadow: 0 0 0 0.8rem rgba(230, 126, 34, 0.5);
 }
