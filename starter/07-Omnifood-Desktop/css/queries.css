@@ -1,0 +1,356 @@
+/* 
+    NEVER USE PIXELS FOR MEDIA QUERIES
+    Pixels does not adjust to the font size setting in the browser and user's zoom level 
+
+    AS SUCH, WE SHOULD USE REM OR EM 
+    rem - root font size | em - current font size
+    rem and em DO NOT depend on html's font-size when performing media queries
+    So, 1rem =/= 10px. Instead, 1rem = 1em = 16px
+
+    REM CAN HAVE BUGS WHEN USED IN MEDIA QUERIES, SO WE STICK WITH EM
+*/
+
+/* 
+    SMALL DESKTOPS
+    Breakpoint: Below a range of 1300px to 1366px (Aim for 1344px = 84rem)
+    Reason: 
+    Hero section is designed for viewport >= 1300px. Once the viewport gets smaller than 
+    that, its design can start to break. Also, there is a widely used screen width of 1366px. 
+*/
+@media (max-width: 84em) {
+	/* rem in CSS rules maintains the 1rem to 10px scaling */
+	.hero {
+		/* To better align with the other containers */
+		max-width: 120rem;
+	}
+
+	.heading-primary {
+		/* Keep the header in Hero section to be < 4 lines */
+		font-size: 4.4rem;
+	}
+
+	.gallery {
+		/* To keep gallery taller than the testimonial section */
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* 
+    LANDSCAPE TABLETS
+    Breakpoint: Below 1200px (75em)
+    Reason:
+    Certain text contents start to have way too many lines and everything seems to be
+    too large for the viewport size
+*/
+@media (max-width: 75em) {
+	html {
+		/* Since most elements are sized using rem, we can adjust their sizes just by changing 
+        the root font size */
+		/* 9px / 16px = 56.25% */
+		font-size: 56.25%;
+	}
+
+	/* NOTE: We maintain the idea of 1rem to 10px here for consistency sake */
+
+	/* Because heading-primary has been set to 4.4rem in the previous query, we need to decrease
+    here as well */
+	.heading-secondary {
+		font-size: 3.6rem;
+	}
+	.heading-tertiary {
+		font-size: 2.4rem;
+	}
+
+	/* To improve the spacing between grid items in the meals and testimonial sections */
+	.grid {
+		column-gap: 4.8rem;
+		row-gap: 6.4rem;
+	}
+
+	/* To align the start and end of navbar with the hero section */
+	.header {
+		padding: 0 3.2rem;
+	}
+
+	/* The originally specified gap is too large for this viewport width, so we decrease it */
+	.hero {
+		gap: 4.8rem;
+	}
+	.header-nav-list {
+		gap: 3.2rem;
+	}
+
+	/* Decrease the padding for the testimonials' container to provide more area for the text content*/
+	.testimonials-container {
+		padding: 9.6rem 3.2rem;
+	}
+}
+
+/* 
+    PORTRAIT TABLETS
+    Breakpoint: 944px (59em)
+    Reason:
+    Some text content starts to have too many lines which cause issues like inconsistent sizing
+    (eg. Cards in Meals section)
+    Some text content starts to have too many lines which affects the readability
+    (eg. Testimonials)
+    The images used in Featured section became too squeezy.
+
+*/
+@media (max-width: 59em) {
+	html {
+		/* Decrease the overall sizing further */
+		/* 8px / 16px */
+		font-size: 50%;
+	}
+
+	/* Amount of viewport width is getting too low to suport the current layout in Hero section */
+	/* As such, we switch the layout to one column with the text content (top and entered) and image below */
+	.hero {
+		grid-template-columns: 1fr;
+		padding: 0 8rem;
+		gap: 6.4rem;
+	}
+	.hero-img {
+		width: 60%;
+	}
+	/* <img> is an inline element, so it gets affected by text-align as well */
+	.hero-text,
+	.hero-img-box {
+		text-align: center;
+	}
+	.delivered-meals {
+		justify-content: center;
+		margin-top: 3.2rem;
+	}
+
+	/* The logo images are now too big to maintain sufficient gaps in the viewport */
+	.logos img {
+		height: 2.4rem;
+	}
+
+	.step-number {
+		font-size: 7.4rem;
+	}
+
+	.meal-content {
+		padding: 2.4rem 3.2rem 3.2rem 2.4rem;
+	}
+
+	/* For gallery and testimonial section, we will switch to one column layout for the same
+    reason as the hero section */
+	.section-testimonials {
+		grid-template-columns: 1fr;
+	}
+	.gallery {
+		grid-template-columns: repeat(6, 1fr);
+	}
+
+	/* Same for CTA section */
+	.cta {
+		grid-template-columns: 3fr 2fr;
+	}
+	.cta-form {
+		grid-template-columns: 1fr;
+	}
+
+	.btn--form {
+		margin-top: 1.2rem;
+	}
+
+	/* Mobile navigation */
+	/* All the navigation links will now be hidden, replaced by a menu button */
+	/* By clicking on that button, the navigation links will be displayed as an overlay on top of the page */
+
+	/* Visible navigation button */
+	.btn-mobile-nav {
+		display: block;
+	}
+
+	/* Menu */
+	.header-nav {
+		background-color: #fff;
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		width: 100%;
+		height: 100vh;
+
+		/* Place the menu outside at the right of the page to allow slide in when becoming visible */
+		transform: translateX(100%);
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		/* 3rd parameter is a transition function */
+		transition: all 0.5s ease-out;
+
+		/* Hide by default */
+		/* Cannot use display: none as it prevents us from using transition on it */
+		/* Need explicitly hide it visually, hide from mouse and keyboard, hide from screen readers */
+		opacity: 0;
+		pointer-events: none;
+		visibility: hidden;
+	}
+	.header-nav-list {
+		flex-direction: column;
+		gap: 4.8rem;
+	}
+	.header-nav-link:link,
+	.header-nav-link:visited {
+		font-size: 3rem;
+	}
+	/* Only if the menu is open */
+	/* By removing the .nav-open from the element, it can go back to hidden */
+	.nav-open .header-nav {
+		opacity: 1;
+		pointer-events: auto;
+		visibility: visible;
+
+		/* Slide the menu in */
+		transform: translateX(0%);
+	}
+	/* Toggling between the close and menu icons */
+	.nav-open .icon-mobile-nav[name="close-outline"] {
+		display: block;
+	}
+	.nav-open .icon-mobile-nav[name="menu-outline"] {
+		display: none;
+	}
+}
+
+/* 
+	SMALLER TABLETS
+	Breakpoint: Below 704px (44em)
+	Reason:
+	Text contents such as the meal cards, price plan cards, features, and footer start to get
+	too cramp when width gets to 700px.
+*/
+@media (max-width: 44em) {
+	/* Text contents that are contained in a grid with 3 or 4 columns are cramped */
+	/* We will set those grids to be 2 columned to provide more space for the content */
+	.grid--3-cols,
+	.grid--4-cols {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	/* Since the list of diets is now in its own row, we center it to look better */
+	.diets {
+		grid-column: 1/-1;
+		justify-self: center;
+	}
+
+	/* The spacing under the secondary header is getting too large for this viewport */
+	.heading-secondary {
+		margin-bottom: 4.8rem;
+	}
+
+	/* Re-allow the price plans card to take up the 100% of the viewport's width, giving
+	it more space for its content */
+	.pricing-plan {
+		width: 100%;
+	}
+
+	/* When width reach around 600px, the footer section's content will overflow */
+	/* A viable layout would be to place the 3 navigation columns as the new grid's 1st row,
+	while the address and contact columns as the new grid's 2nd row  */
+	.grid--footer {
+		grid-template-columns: repeat(6, 1fr);
+	}
+	.nav-col {
+		/* Each nav column must be in 1st row and each span 2 grid columns */
+		grid-row: 1;
+		grid-column: span 2;
+		margin-bottom: 3.2rem;
+	}
+	.logo-col,
+	.address-col {
+		/* Other columns must each span 3 grid columns */
+		grid-column: span 3;
+	}
+}
+
+/* 
+	PHONES
+	Breakpoint:  Below 544px (544/16 = 34rem)
+	Reason:
+	Contents in the sections and components such as Featured in, How it works, Meal cards, Gallery,
+	Price plan cards, and CTA starts to get too cramp or small. In fact, 2 column grids is not
+	viable in this low width.
+*/
+
+@media (max-width: 34em) {
+	.grid {
+		row-gap: 4.8rem;
+	}
+
+	.grid--2-cols,
+	.grid--3-cols,
+	.grid--4-cols {
+		grid-template-columns: 1fr;
+	}
+
+	/* Reduce the padding to give more space for Hero to grow in smaller screens */
+	.hero {
+		padding: 0 3.2rem;
+	}
+	/* There is too much vertical spacing between Hero and its next section */
+	.section-hero {
+		padding: 2.4rem 0 6.4rem 0;
+	}
+	/* Increase height but decrease the width of the Hero's buttons to keep them in 1 row while
+	improving user's ability to click on them */
+	.btn,
+	.btn:link,
+	.btn:visited {
+		padding: 2.4rem 1.6rem;
+	}
+	.hero-img {
+		width: 80%;
+	}
+
+	/* Reduce logo size to squeeze them back to 1 row */
+	.logos img {
+		height: 1.2rem;
+	}
+
+	/* 
+		Since we only use 1 column grid now, the original Z pattern layout results in incorrect
+		order of text and images in the How it works section
+		
+		Resolve by explicitly stating which grid row which image will take
+		
+		This selector refers to a element with class .step-img-box that is the 2nd child of 
+		a container element 
+	*/
+	.step-img-box:nth-child(2) {
+		grid-row: 1;
+	}
+	.step-img-box:nth-child(6) {
+		grid-row: 5;
+	}
+	/* Shifts the image closer to its section's text content, making the spacing less
+	ambigious */
+	.step-img-box {
+		transform: translateY(2.4rem);
+	}
+
+	/* Update the grid layouts to reduce crampness in these sections */
+	.testimonials {
+		grid-template-columns: 1fr;
+	}
+	.gallery {
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1.2rem;
+	}
+
+	.cta {
+		grid-template-columns: 1fr;
+	}
+	.cta-img-box {
+		grid-row: 1;
+		height: 32rem;
+	}
+}

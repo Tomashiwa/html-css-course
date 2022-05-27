@@ -3,6 +3,9 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<!-- Crucial for responsive web devices on mobile devices -->
+		<!-- By default, those devices will zoom out till the page fits the screen (Not a behavior we want) -->
+		<!-- This meta element ensure that the page only match the screen's width, no zooming out -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,6 +18,7 @@
 		<!-- If a .css file gets too long, can split to multiple and import all of them -->
 		<link rel="stylesheet" href="css/general.css" />
 		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/queries.css" />
 
 		<!-- Download and import the ionicons script, allow us to place <ion-icon> elements to represent the icon we want-->
 		<!-- The script will then inject the corresponding <svg> elements -->
@@ -31,6 +35,7 @@
 			<a href="#">
 				<img class="logo" alt="Omnifood logo" src="img/omnifood-logo.png" />
 			</a>
+
 			<nav class="header-nav">
 				<ul class="header-nav-list">
 					<li><a class="header-nav-link" href="#">How it works</a></li>
@@ -40,6 +45,11 @@
 					<li><a class="header-nav-link nav-cta" href="#">Try for free</a></li>
 				</ul>
 			</nav>
+
+			<button class="btn-mobile-nav">
+				<ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+				<ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+			</button>
 		</header>
 
 		<!-- A HTML5 semantic element that contains the main area of the page, contains non-repeating content in a website -->

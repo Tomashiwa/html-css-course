@@ -55,6 +55,9 @@ html {
 	/* Allow us to respect the user's definition of browser's font size */
 	font-size: 62.5%;
 
+	/* Allow us to hide elements outside on the horizontal axis */
+	overflow-x: hidden;
+
 	/* Before elements are rendered to the page, all relative units (eg. rem, %) are converted to px */
 }
 
@@ -63,6 +66,9 @@ body {
 	line-height: 1;
 	font-weight: 400;
 	color: #555;
+
+	/* Allow us to hide elements outside on the horizontal axis */
+	overflow-x: hidden;
 }
 
 .test {
@@ -267,6 +273,7 @@ strong {
 	display: flex;
 	align-items: center;
 	gap: 1.6rem;
+	line-height: 1.2;
 }
 
 /* The default focus outline tends to be ugly, so we should override them if possible */
