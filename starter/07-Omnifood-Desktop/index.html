@@ -3,10 +3,23 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<!--  -->
+		<!-- Description of the website that will appear in search engine results -->
+		<meta name="description" content="Omnifood is an AI-powered food subscriptive service that will make you eat healthy again, 365 days per year. It's tailored to your personal tastes and nutritional needs." />
+
 		<!-- Crucial for responsive web devices on mobile devices -->
 		<!-- By default, those devices will zoom out till the page fits the screen (Not a behavior we want) -->
 		<!-- This meta element ensure that the page only match the screen's width, no zooming out -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Specify the favicons for this page -->
+		<!-- Browsers -->
+		<link rel="icon" href="img/favicon.png" />
+		<!-- Favorite in Apple home screen -->
+		<link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+		<!-- Favorite in Android home screen -->
+		<link rel="manifest" href="manifest.webmanifest" />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,8 +40,11 @@
 			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
 		></script>
 		<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+		
+		<script defer src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
+		<script defer src="js/script.js"></script>
 
-		<title>Omnifood</title>
+		<title>Omnifood &mdash; Never cook again</title>
 	</head>
 	<body>
 		<header class="header">
@@ -38,11 +54,11 @@
 
 			<nav class="header-nav">
 				<ul class="header-nav-list">
-					<li><a class="header-nav-link" href="#">How it works</a></li>
-					<li><a class="header-nav-link" href="#">Meals</a></li>
-					<li><a class="header-nav-link" href="#">Testimonials</a></li>
-					<li><a class="header-nav-link" href="#">Pricing</a></li>
-					<li><a class="header-nav-link nav-cta" href="#">Try for free</a></li>
+					<li><a class="header-nav-link" href="#how">How it works</a></li>
+					<li><a class="header-nav-link" href="#meals">Meals</a></li>
+					<li><a class="header-nav-link" href="#testimonials">Testimonials</a></li>
+					<li><a class="header-nav-link" href="#pricing">Pricing</a></li>
+					<li><a class="header-nav-link nav-cta" href="#cta">Try for free</a></li>
 				</ul>
 			</nav>
 
@@ -64,9 +80,10 @@
 							The smart 365-days-per-year food subscription that will make you eat
 							healthy again. Tailored to your personal tastes and nutritional needs.
 						</p>
-						<a href="#" class="btn btn--full margin-right-sm">Start eating well</a>
+						<!-- "cta" is the element id that we want the page to anchor to upon clicking  -->
+						<a href="#cta" class="btn btn--full margin-right-sm">Start eating well</a>
 						<!-- HTML entity for right arrow -->
-						<a href="#" class="btn btn--outline">Learn more &rarr;</a>
+						<a href="#how" class="btn btn--outline">Learn more &rarr;</a>
 						<div class="delivered-meals">
 							<div class="delivered-imgs">
 								<img src="img/customers/customer-1.jpg" alt="Customer photo" />
@@ -82,11 +99,15 @@
 						</div>
 					</div>
 					<div class="hero-img-box">
-						<img
-							class="hero-img"
-							src="img/hero.png"
-							alt="Woman enjoying food, Meals in storage container, and bowls of food on table"
-						/>
+						<picture>
+							<source srcset="img/hero.webp" type="image/webp">
+							<source srcset="img/hero-min.png" type="image/png">
+							<img
+								src="img/hero-min.png"
+								class="hero-img"
+								alt="Woman enjoying food, Meals in storage container, and bowls of food on table"
+							/>
+						</picture>
 					</div>
 				</div>
 			</section>
@@ -104,7 +125,7 @@
 				</div>
 			</section>
 
-			<section class="section-how">
+			<section class="section-how" id="how">
 				<div class="container">
 					<span class="subheading">How it works</span>
 					<h2 class="heading-secondary">Your daily dose of health in 3 simple steps</h2>
@@ -168,7 +189,7 @@
 				</div>
 			</section>
 
-			<section class="section-meals">
+			<section class="section-meals" id="meals">
 				<div class="container center-text">
 					<span class="subheading">Meals</span>
 					<h2 class="heading-secondary">Omnifood AI chooses from 5,000+ recipes</h2>
@@ -288,7 +309,7 @@
 				</div>
 			</section>
 
-			<section class="section-testimonials">
+			<section class="section-testimonials" id="testimonials">
 				<!-- Create this container to place the subheading and secondary headings, allow it to not get affect by the inner 2x2 grid -->
 				<div class="testimonials-container">
 					<span class="subheading">Testimonials</span>
@@ -426,7 +447,7 @@
 				</div>
 			</section>
 
-			<section class="section-pricing">
+			<section class="section-pricing" id="pricing">
 				<div class="container">
 					<span class="subheading">Pricing</span>
 					<h2 class="heading-secondary">Eating well without breaking the bank</h2>
@@ -537,7 +558,7 @@
 				</div>
 			</section>
 
-			<section class="section-cta">
+			<section class="section-cta" id="cta">
 				<div class="container">
 					<!-- This additional div is to align the orange box with the above content and have the padding at the side of the orange box -->
 					<div class="cta">
@@ -549,7 +570,7 @@
 								meal is on us!
 							</p>
 							<!-- Action attribute specifices the URL that processes the form submission -->
-							<form class="cta-form" action="#">
+							<form class="cta-form" name="sign-up" netlify>
 								<div>
 									<!-- For and Id attributes link <label> and <input>, allow us to perform action like clicking label to turn input field active -->
 									<label for="full-name">Full name</label>
@@ -557,6 +578,7 @@
 									<!-- Placeholder attribute specifices a brief hint to the user on what kind of info is expected in the field -->
 									<input
 										id="full-name"
+										name="full-name"
 										type="text"
 										placeholder="John Smith"
 										required
@@ -567,6 +589,7 @@
 									<label for="email">Email address</label>
 									<input
 										id="email"
+										name="email"
 										type="email"
 										placeholder="me@example.com"
 										required
@@ -575,7 +598,7 @@
 
 								<div>
 									<label for="select-where">Where did you hear from us?</label>
-									<select id="select-where" required>
+									<select id="select-where" name="select-where" required>
 										<option value="friends-family">Friends and family</option>
 										<option value="youtube">YouTube videos</option>
 										<option value="podcast">Podcast</option>
@@ -615,7 +638,7 @@
 						</li>
 					</ul>
 
-					<p class="copyright">Copyright &copy; 2027 by Omnifood Inc. All rights reserved</p>
+					<p class="copyright">Copyright &copy; <span class="year">2027</span> by Omnifood Inc. All rights reserved</p>
 				</div>
 				<div class="address-col">
 					<p class="footer-heading">Contact us</p>

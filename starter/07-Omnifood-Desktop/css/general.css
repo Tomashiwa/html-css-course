@@ -59,6 +59,10 @@ html {
 	overflow-x: hidden;
 
 	/* Before elements are rendered to the page, all relative units (eg. rem, %) are converted to px */
+
+	/* Smooth out the scrolling when clicking an anchor */
+	/* DOES NOT WORK ON SAFARI AND EDGE WHEN THIS IS WRITTEN */
+	/* scroll-behavior: smooth; */
 }
 
 body {
@@ -69,6 +73,7 @@ body {
 
 	/* Allow us to hide elements outside on the horizontal axis */
 	overflow-x: hidden;
+	scroll-behavior: smooth;
 }
 
 .test {
